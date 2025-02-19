@@ -1,0 +1,2 @@
+/home/faris-rafi/My Files/Study/Flutter Course/Coding/jurham/android/app/.cxx/RelWithDebInfo/65g13213/armeabi-v7a/CMakeFiles/edit_cache.dir
+/home/faris-rafi/My Files/Study/Flutter Course/Coding/jurham/android/app/.cxx/RelWithDebInfo/65g13213/armeabi-v7a/CMakeFiles/rebuild_cache.dir
