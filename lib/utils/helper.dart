@@ -1,6 +1,8 @@
 import 'dart:math';
-
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:money_formatter/money_formatter.dart';
+
+final storage = FlutterSecureStorage();
 
 int unformatCurrency(String? formattedValue) {
   if (formattedValue == null || formattedValue.isEmpty) return 0;
@@ -17,21 +19,21 @@ String formatToCurrency(double value) {
   return fmf.output.symbolOnLeft;
 }
 
-int roundFloorPrice(int price) {
+int roundFloorPrice(double price) {
   if (price < 200) {
     return price.floor();
   } else if (price < 500) {
-    return (price.floor() ~/ 2) * 2;
+    return (price / 2).floor() * 2;
   } else if (price < 2000) {
-    return (price.floor() ~/ 5) * 5;
+    return (price / 5).floor() * 5;
   } else if (price < 5000) {
-    return (price.floor() ~/ 10) * 10;
+    return (price / 10).floor() * 10;
   } else {
-    return (price.floor() ~/ 25) * 25;
+    return (price / 25).floor() * 25;
   }
 }
 
-int roundCeilPrice(int price) {
+int roundCeilPrice(double price) {
   if (price < 200) {
     return price.ceil();
   } else if (price < 500) {
@@ -48,9 +50,9 @@ int roundCeilPrice(int price) {
 String? priceValidator(String? value) {
   int inputtedValue = unformatCurrency(value);
   String formattedFloorValue =
-      formatToCurrency(roundFloorPrice(inputtedValue).toDouble());
+      formatToCurrency(roundFloorPrice(inputtedValue.toDouble()).toDouble());
   String formattedCeilValue =
-      formatToCurrency(roundCeilPrice(inputtedValue).toDouble());
+      formatToCurrency(roundCeilPrice(inputtedValue.toDouble()).toDouble());
 
   if (value == null || value.isEmpty) {
     return 'Tolong masukkan jumlah yang valid.';
@@ -59,7 +61,7 @@ String? priceValidator(String? value) {
   } else if (inputtedValue > 200000) {
     return 'Harga tidak boleh lebih dari Rp.200.000';
   } else {
-    if (inputtedValue != roundFloorPrice(inputtedValue)) {
+    if (inputtedValue != roundFloorPrice(inputtedValue.toDouble())) {
       return "Harga tidak tersedia, pakai $formattedFloorValue atau $formattedCeilValue";
     }
   }
@@ -85,4 +87,16 @@ double calculateRoundedMaxY(maxY) {
 
   return ((((maxY / roundingFactor) * 10).ceil() / 10) * roundingFactor)
       .toDouble();
+}
+
+Future<void> saveToken(String token) async {
+  await storage.write(key: "auth_token", value: token);
+}
+
+Future<String?> getToken() async {
+  return await storage.read(key: "auth_token");
+}
+
+Future<void> deleteToken() async {
+  await storage.delete(key: "auth_token");
 }

@@ -32,11 +32,11 @@ class AraArbBrain {
         : rules['arb_percentage'];
 
     int araCalc = roundFloorPrice(
-      (hargaPenutupan * (100 + araPercentage)) ~/ 100,
+      (hargaPenutupan * (100 + araPercentage)) / 100,
     );
 
     int arbCalc = roundCeilPrice(
-      (hargaPenutupan * (100 - arbPercentage)) ~/ 100,
+      (hargaPenutupan * (100 - arbPercentage)) / 100,
     );
 
     double araPercentCalc = ((araCalc - hargaPenutupan) / hargaPenutupan) * 100;
@@ -61,7 +61,7 @@ class AraArbBrain {
           );
 
           int newAraVal =
-              roundFloorPrice((oldAraVal * (100 + newAraPercentage)) ~/ 100);
+              roundFloorPrice((oldAraVal * (100 + newAraPercentage)) / 100);
           araPercentCalc = ((newAraVal - oldAraVal) / oldAraVal) * 100;
 
           if (newAraVal <= 200000) {
@@ -96,7 +96,7 @@ class AraArbBrain {
               : rules['arb_percentage'];
 
           int newArbVal = roundCeilPrice(
-            (oldArbVal * (100 - newArbPercentage)) ~/ 100,
+            (oldArbVal * (100 - newArbPercentage)) / 100,
           );
 
           if (newArbVal > minPrice) {
@@ -149,7 +149,7 @@ class AraArbBrain {
         );
 
         int newAraVal =
-            roundFloorPrice((oldAraVal * (100 + newAraPercentage)) ~/ 100);
+            roundFloorPrice((oldAraVal * (100 + newAraPercentage)) / 100);
         araPercentCalc = ((newAraVal - oldAraVal) / oldAraVal) * 100;
 
         if (newAraVal <= 200000) {
@@ -182,7 +182,7 @@ class AraArbBrain {
             : rules['arb_percentage'];
 
         int newArbVal = roundCeilPrice(
-          (oldArbVal * (100 - newArbPercentage)) ~/ 100,
+          (oldArbVal * (100 - newArbPercentage)) / 100,
         );
 
         if (newArbVal > minPrice) {

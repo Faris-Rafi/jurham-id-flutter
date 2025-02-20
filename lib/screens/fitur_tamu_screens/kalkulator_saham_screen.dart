@@ -32,7 +32,7 @@ class _KalkulatorSahamScreenState extends State<KalkulatorSahamScreen> {
   String jumlahLot = '';
   String hargaJual = '';
   bool isFeeCounting = true;
-  int dropdownValue = 1;
+  int dropdownValue = 0;
 
   Map<String, double> results = {};
   List<dynamic> feeList = [];

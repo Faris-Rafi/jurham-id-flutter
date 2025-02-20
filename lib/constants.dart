@@ -6,6 +6,12 @@ const kTitleTextStyle = TextStyle(
   color: Colors.white,
 );
 
+const kTitleTextStyleBlack = TextStyle(
+  fontSize: 20.0,
+  fontWeight: FontWeight.bold,
+  color: Colors.black,
+);
+
 const kUnderlineTextStyle = TextStyle(
   decoration: TextDecoration.underline,
   decorationColor: Colors.white,

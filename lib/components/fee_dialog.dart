@@ -33,7 +33,7 @@ Future<void> feeDialog(
             contentPadding:
                 EdgeInsets.symmetric(horizontal: 12.0, vertical: 14.0),
           ),
-          value: feeList.first['id'],
+          value: dropdownValue == 0 ? feeList.first['id'] : dropdownValue,
           icon: const Icon(FontAwesomeIcons.chevronDown),
           onChanged: handleChange,
           items: feeList.map((value) {
