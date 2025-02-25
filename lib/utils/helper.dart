@@ -11,10 +11,20 @@ int unformatCurrency(String? formattedValue) {
 }
 
 String formatToCurrency(double value) {
-  if (value == 0) return '';
+  MoneyFormatter fmf = MoneyFormatter(
+    amount: value.abs(),
+    settings: MoneyFormatterSettings(symbol: "Rp.", fractionDigits: 0),
+  );
+
+  String formatted = fmf.output.symbolOnLeft;
+
+  return value < 0 ? '-$formatted' : formatted;
+}
+
+String formatNoCurrency(double value) {
   MoneyFormatter fmf = MoneyFormatter(
     amount: value,
-    settings: MoneyFormatterSettings(symbol: "Rp.", fractionDigits: 0),
+    settings: MoneyFormatterSettings(symbol: "", fractionDigits: 0),
   );
   return fmf.output.symbolOnLeft;
 }

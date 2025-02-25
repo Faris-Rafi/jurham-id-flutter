@@ -162,20 +162,21 @@ class _AraArbScreenState extends State<AraArbScreen> {
                             SizedBox(
                               width: double.infinity,
                               child: ReusableButton(
-                                formKey: _formKey,
                                 handlePress: () {
-                                  AraArbBrain calc = AraArbBrain(
-                                    hargaPenutupan:
-                                        unformatCurrency(hargaPenutupan),
-                                    rules: rules.firstWhere(
-                                        (item) => item['id'] == dropdownValue),
-                                    ara: araArbOpts['ara']!,
-                                    arb: araArbOpts['arb']!,
-                                  );
+                                  if (_formKey.currentState!.validate()) {
+                                    AraArbBrain calc = AraArbBrain(
+                                      hargaPenutupan:
+                                          unformatCurrency(hargaPenutupan),
+                                      rules: rules.firstWhere((item) =>
+                                          item['id'] == dropdownValue),
+                                      ara: araArbOpts['ara']!,
+                                      arb: araArbOpts['arb']!,
+                                    );
 
-                                  setState(() {
-                                    results = calc.getResults();
-                                  });
+                                    setState(() {
+                                      results = calc.getResults();
+                                    });
+                                  }
                                 },
                                 title: 'Hitung',
                                 backgroundColor: Color(0xFFD47D19),

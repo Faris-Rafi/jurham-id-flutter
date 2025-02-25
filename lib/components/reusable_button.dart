@@ -3,13 +3,11 @@ import 'package:flutter/material.dart';
 class ReusableButton extends StatelessWidget {
   const ReusableButton({
     super.key,
-    required GlobalKey<FormState> formKey,
     required this.title,
     required this.backgroundColor,
     required this.handlePress,
-  }) : _formKey = formKey;
+  });
 
-  final GlobalKey<FormState> _formKey;
   final String title;
   final Color backgroundColor;
   final Function handlePress;
@@ -28,9 +26,7 @@ class ReusableButton extends StatelessWidget {
         ),
       ),
       onPressed: () {
-        if (_formKey.currentState!.validate()) {
-          handlePress();
-        }
+        handlePress();
       },
       child: Text(
         title,

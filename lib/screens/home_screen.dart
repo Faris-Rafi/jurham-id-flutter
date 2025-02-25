@@ -6,7 +6,7 @@ import 'package:jurham/components/reusable_icon_button.dart';
 import 'package:jurham/constants.dart';
 import 'package:jurham/screens/fitur_tamu_screens/ara_arb_screen.dart';
 import 'package:jurham/screens/fitur_tamu_screens/dividen_hunter_screen.dart';
-import 'package:jurham/screens/fitur_pengguna_screens/jurnal_saham_screen.dart';
+import 'package:jurham/screens/fitur_pengguna_screens/pilih_jurnal_screen.dart';
 import 'package:jurham/screens/fitur_tamu_screens/kalkulator_saham_screen.dart';
 import 'package:jurham/screens/auth_screens/login_screen.dart';
 import 'package:jurham/utils/helper.dart';
@@ -185,7 +185,7 @@ class _MyHomeScreenState extends State<MyHomeScreen> {
                                         context,
                                         MaterialPageRoute(
                                           builder: (context) =>
-                                              JurnalSahamScreen(),
+                                              PilihJurnalScreen(),
                                         ),
                                       );
                                     },

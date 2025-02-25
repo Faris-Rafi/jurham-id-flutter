@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:jurham/components/screen_app_bar.dart';
 
-class JurnalSahamScreen extends StatelessWidget {
-  const JurnalSahamScreen({super.key});
+class JurnalSahamDetailScreen extends StatelessWidget {
+  const JurnalSahamDetailScreen({super.key, required this.uuid});
+
+  final String uuid;
 
   @override
   Widget build(BuildContext context) {

@@ -182,22 +182,24 @@ class _DividenHunterScreenState extends State<DividenHunterScreen> {
                             SizedBox(
                               width: double.infinity,
                               child: ReusableButton(
-                                formKey: _formKey,
                                 handlePress: () {
-                                  DividenHunterBrain calc = DividenHunterBrain(
-                                    feeData: feeList.firstWhere(
-                                        (item) => item['id'] == dropdownValue),
-                                    hargaBeli: unformatCurrency(hargaBeli),
-                                    hargaDividen:
-                                        unformatCurrency(hargaDividen),
-                                    hargaJual: unformatCurrency(hargaJual),
-                                    isFeeCounting: isFeeCounting,
-                                    jumlahLot: unformatCurrency(jumlahLot),
-                                  );
+                                  if (_formKey.currentState!.validate()) {
+                                    DividenHunterBrain calc =
+                                        DividenHunterBrain(
+                                      feeData: feeList.firstWhere((item) =>
+                                          item['id'] == dropdownValue),
+                                      hargaBeli: unformatCurrency(hargaBeli),
+                                      hargaDividen:
+                                          unformatCurrency(hargaDividen),
+                                      hargaJual: unformatCurrency(hargaJual),
+                                      isFeeCounting: isFeeCounting,
+                                      jumlahLot: unformatCurrency(jumlahLot),
+                                    );
 
-                                  setState(() {
-                                    results = calc.getResults();
-                                  });
+                                    setState(() {
+                                      results = calc.getResults();
+                                    });
+                                  }
                                 },
                                 title: 'Hitung',
                                 backgroundColor: Color(0xFFD47D19),

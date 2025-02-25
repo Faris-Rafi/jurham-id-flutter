@@ -164,21 +164,22 @@ class _KalkulatorSahamScreenState extends State<KalkulatorSahamScreen> {
                             SizedBox(
                               width: double.infinity,
                               child: ReusableButton(
-                                formKey: _formKey,
                                 handlePress: () {
-                                  KalkulatorSahamBrain calc =
-                                      KalkulatorSahamBrain(
-                                    hargaBeli: unformatCurrency(hargaBeli),
-                                    jumlahLot: unformatCurrency(jumlahLot),
-                                    hargaJual: unformatCurrency(hargaJual),
-                                    isFeeCounting: isFeeCounting,
-                                    feeData: feeList.firstWhere(
-                                        (item) => item['id'] == dropdownValue),
-                                  );
+                                  if (_formKey.currentState!.validate()) {
+                                    KalkulatorSahamBrain calc =
+                                        KalkulatorSahamBrain(
+                                      hargaBeli: unformatCurrency(hargaBeli),
+                                      jumlahLot: unformatCurrency(jumlahLot),
+                                      hargaJual: unformatCurrency(hargaJual),
+                                      isFeeCounting: isFeeCounting,
+                                      feeData: feeList.firstWhere((item) =>
+                                          item['id'] == dropdownValue),
+                                    );
 
-                                  setState(() {
-                                    results = calc.getResults();
-                                  });
+                                    setState(() {
+                                      results = calc.getResults();
+                                    });
+                                  }
                                 },
                                 title: 'Hitung',
                                 backgroundColor: Color(0xFFD47D19),
